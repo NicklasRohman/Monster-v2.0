@@ -2,13 +2,28 @@ package controller;
 
 
 import model.Adventure;
+import model.EasyEnemy;
+import model.Enemy;
 import view.ConfirmBox;
 import view.GUI;
 
 public class GameController {
 	static GUI gui; 
 	public static GameController gc = null; 
+	
+	private Enemy enemy01;
+	private Enemy enemy02;
+	private Enemy enemy03;
+	private Enemy enemy04;
+
+	
+	
+	
 	private GameController() {
+		enemy01 = new EasyEnemy(0, 0, 0, 0);
+		enemy02 = new EasyEnemy(0, 0, 0, 0);
+		enemy03 = new EasyEnemy(0, 0, 0, 0);
+		enemy04 = new EasyEnemy(0, 0, 0, 0);
 		
 	}
 	
