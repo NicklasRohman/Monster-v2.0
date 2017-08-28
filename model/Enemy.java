@@ -9,7 +9,7 @@ public abstract class Enemy extends LivingEntity{
 
 	public String NameGenerator(){
 		
-		return "";
+		return "poop";
 	}
 	
 	
