@@ -1,11 +1,9 @@
 package model;
 
-import java.util.Random;
 
 public class ItemGenerator {
 
 	private String firstName[],secundName[]; 
-	static Random rand = new Random();
 	
 	public ItemGenerator() {
 
@@ -32,18 +30,14 @@ public class ItemGenerator {
 	}
 
 	public String nameGenerator(){
+
 		
-		rand.nextInt(0,1);
-		String nameString = getFirstName(rand(0,firstName.length)) + " " + getSecundName(Random(0,secundName.length));
-		
-		return nameString;
+		return "";
 	}
 
 
 
 }
-
-
 
 
 
