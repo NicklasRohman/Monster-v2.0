@@ -32,6 +32,11 @@ public abstract class LivingEntity {
 	* @param name is the name of the player.
 	*/
 		
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	/**
 	* Get players name.
 	* @return name returns the name of the player.
