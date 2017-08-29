@@ -40,7 +40,6 @@ public class Player extends LivingEntity {
 //		this.nameLeggings = "Cloth Leggings";
 //		this.nameShoulders = "Cloth Shoulders";
 //		
-//
 	}
 	
 	public static Player getInstance(){

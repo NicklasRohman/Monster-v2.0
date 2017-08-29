@@ -5,6 +5,7 @@ import model.ItemGenerator;
 import model.Player;
 import model.RandomClass;
 import view.GUI;
+import view.UsePotain;
 
 public class Battle {
 
@@ -17,23 +18,24 @@ public class Battle {
 		return battle;
 	};
 	
+	UsePotain usepotain = UsePotain.getInstance();
+	
 	private Battle() {
 	}
 
-	public void battle(Enemy monster,ItemGenerator item,Player player){
+	public void battle(Player player,Enemy monster){
 		do {
-			int damage = hitFor(player.getAttackPoints()+player.getPlayerStrength()+player.getWeaponAP());
+			int damage = hitFor(player.getAttackPoints()+player.getPlayerStrength()+player.getWeaponAP()) ;
 			if (player.isAlive()) {
-//			GUI.printTextArea((player.getName() +" hits with a " + player.getWeaponName() + " and is dealing "+ damage + " damage to the "+ monster.getName());
-//				monster.setHp(monster.getHp() - damage);			
+				GUI.printTextArea(("Hero "+ player.getName() +" hits with a " + player.getWeaponName()+ " and is dealing "+ damage + " damage to the "+ monster.getName()));
+				monster.setHp(monster.getHp() - damage);			
 			}
 			else {
-				GUI.printTextArea(player.getName()+" have been slayed by the " + monster.getName());
+				GUI.printTextArea(player.getName() + " have been slayed by the " +monster.getName());
 				player.setHp(0);
 				if (player.getHealingPotions() > 0) {
-					//System.out.println("Do you want to use a potion? y/n ");
-					String input = "";
-					if (input.equalsIgnoreCase("y")) {
+					boolean input = usepotain.display("Healing?", "Do you want to use a potion? y/n");
+					if (input) {
 						player.restorHealt(player.getHealingPotions());
 					}
 					else {
@@ -45,20 +47,18 @@ public class Battle {
 				}
 			}
 			
-			//damage = hitFor(monster.getMonsterAttackPoints() - player.getPlayerToughness());
+			damage = hitFor(monster.getAttackPoints() - player.getPlayerToughness());
 			if (monster.isAlive()) {
-				//System.out.printf("%s hits for %s damage to the hero %s%n",monster.getMonsterName() ,damage ,player.getName());
+				GUI.printTextArea((monster.getName() + " hits for "+ damage + "damage to " + player.getName()));
 				player.setHp(player.getHp()-damage);
-				
 				}
 				
 				if (!player.isAlive()) {
-						//System.out.printf("You have been slayed by the %s",monster.getMonsterName());
+					GUI.printTextArea("You have been slayed by the " +monster.getName());
 						player.setHp(0);
 						if (player.getHealingPotions() > 0) {
-							//System.out.println("Do you want to use a potion? y/n ");
-							String input = "";
-							if (input.equalsIgnoreCase("y")) {
+							boolean input = usepotain.display("Healing?", "Do you want to use a potion? y/n");
+							if (input) {
 								player.restorHealt(player.getHealingPotions());
 							}
 							else {
