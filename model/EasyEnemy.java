@@ -1,9 +1,8 @@
 package model;
 
 public class EasyEnemy extends Enemy{
-
-	public EasyEnemy(int hp, int attackPower, int defence, int level) {
-		super(hp, attackPower, defence, level);
+	
+	public EasyEnemy(int playerLevel) {
+		super(RandomClass.getInt(1, 5) * playerLevel, RandomClass.getInt(1, 5) * playerLevel, RandomClass.getInt(1, 5) * playerLevel, RandomClass.getInt(1, 5) * playerLevel);
 	}
-
 }

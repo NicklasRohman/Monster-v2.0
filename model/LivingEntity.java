@@ -61,6 +61,10 @@ public abstract class LivingEntity {
 	}
 	
 
+	public void setAttackPower(int attackPower) {
+		this.attackPower = attackPower;
+	}
+	
 	/**
 	* Get players attack points.
 	* @return attackPoints returns players attackPoints.
