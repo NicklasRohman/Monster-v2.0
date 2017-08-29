@@ -1,6 +1,7 @@
 package view;
 
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,11 +10,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Player;
 
 public class NameBox {
 
 	static String answer;
 	static NameBox nameBox;
+	
+	Stage alertWindow;
+	
 	
 	private NameBox() {		
 	}
@@ -26,7 +31,8 @@ public class NameBox {
 	}
 
 	public String display(String title, String message){
-		Stage alertWindow = new Stage();
+		
+		alertWindow = new Stage();
 	
 		alertWindow.initModality(Modality.APPLICATION_MODAL);
 		alertWindow.setTitle(title);
@@ -38,21 +44,22 @@ public class NameBox {
 			
 		Button okButton = new Button("Ok"); 
 		TextField nameInput  = new TextField();
-		
+		Player p = Player.getInstance();
 		okButton.setOnAction(e ->{
-			System.out.println(nameInput.getText());
+			
+			p.setName(nameInput.getText());
 			alertWindow.close();
 			
 		});
 		
 		VBox layout = new VBox(20);
+		layout.setPadding(new Insets(20,20,20,20));
 		layout.getChildren().addAll(label,nameInput,okButton);
 		layout.setAlignment(Pos.CENTER);
 		
 		Scene scen = new Scene(layout);
 		alertWindow.setScene(scen);
 		alertWindow.showAndWait();
-		
-		return "";
+		return p.getName();
 	}
 }

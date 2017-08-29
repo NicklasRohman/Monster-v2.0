@@ -59,8 +59,4 @@ public class Adventure {
 	public void setAdventureWalk(int thisAdventureWalk) {
 		adventureWalk = thisAdventureWalk;
 	}
-	
-	
-	
-	
 }

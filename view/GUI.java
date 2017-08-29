@@ -32,7 +32,12 @@ public class GUI extends Application{
 
 		    @Override
 		    public void start(Stage primaryStage) throws Exception {
-		        try {
+		        
+		    	
+		    	
+		    	
+		    	
+		    	try {
 		        	
 		        	adventureButton = new Button("Adventure");
 		    		attackButton = new Button("Attack");
@@ -111,20 +116,14 @@ public class GUI extends Application{
 		        Scene scene = new Scene(pane, 1200, 800);
 		        primaryStage.setScene(scene);
 		        primaryStage.show();
+		        playerName();
+		        
 		        }
 		        catch (Exception e) {
 		            e.printStackTrace();
 		        }
 		    }
 		    
-//		    public Button addButton(String text, double x, double y, String color) {
-//		        Button btn = new Button(text);
-//		        btn.setStyle("-fx-background-color: #" + color + ";");
-//		        btn.setPrefSize(x, y);
-//		        
-//		        return btn;
-//		    }
-//		    
 		    public Label addLabel(String text, String color, double x, double y) {
 		        Label label = new Label(text);
 		        label.setStyle("-fx-background-color: #" + color + ";");
@@ -134,6 +133,12 @@ public class GUI extends Application{
 		    
 		    public static void printTextArea(String textToPrint){
 		    	textarea.setText(textToPrint +"\n" + textarea.getText());
+		    }
+		    
+		    public void playerName(){
+		    	NameBox nameBox = NameBox.getInstance();
+				textarea.setText("A new hero named " + nameBox.display("Character Name", "What will the hero name be?") + " have emerged!!");
+		    
 		    }
 	
 	}

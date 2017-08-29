@@ -6,6 +6,7 @@ import model.EasyEnemy;
 import model.Enemy;
 import view.ConfirmBox;
 import view.GUI;
+import view.NameBox;
 
 public class GameController {
 	static GUI gui; 
@@ -15,8 +16,6 @@ public class GameController {
 	private Enemy enemy02;
 	private Enemy enemy03;
 	private Enemy enemy04;
-
-	
 	
 	
 	private GameController() {
@@ -35,13 +34,12 @@ public class GameController {
 	}
 	
 	public static void main(String[] args) {
-		gui = new GUI();
+		gui = new GUI();		
 		gui.startGui(args);
 	}
 
 	public String adventureBtn() {
 		Adventure adventure = Adventure.getInstance();		
-
 		String adventureLog = adventure.goAdventuring();
 		
 		if (adventure.getAdventureWalk() >= 0){

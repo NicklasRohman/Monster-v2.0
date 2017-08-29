@@ -22,13 +22,13 @@ public class Battle {
 
 	public void battle(Enemy monster,ItemGenerator item,Player player){
 		do {
-			int damage = hitFor(player.getAttackPoints()+player.getPlayerStrength()+player.getWeaponAP()) ;
+			int damage = hitFor(player.getAttackPoints()+player.getPlayerStrength()+player.getWeaponAP());
 			if (player.isAlive()) {
-//				GUI.printTextArea(("Hero "+ player.getName() +" hits with a " + player.getWeaponName()+ " and is dealing "+ damage + " damage to the "+ monster.getMonsterName());
-//				monster.setHp(monster.getMonsterHp() - damage);			
+//			GUI.printTextArea((player.getName() +" hits with a " + player.getWeaponName() + " and is dealing "+ damage + " damage to the "+ monster.getName());
+//				monster.setHp(monster.getHp() - damage);			
 			}
 			else {
-				//GUI.printTextArea("You have been slayed by the %s",monster.getMonsterName());
+				GUI.printTextArea(player.getName()+" have been slayed by the " + monster.getName());
 				player.setHp(0);
 				if (player.getHealingPotions() > 0) {
 					//System.out.println("Do you want to use a potion? y/n ");

@@ -20,11 +20,11 @@ public class Battle {
 		do {
 			int damage = hitFor(player.getAttackPoints()+player.getPlayerStrength()+player.getWeaponAP()) ;
 			if (player.isAlive()) {
-//				GUI.printTextArea(("Hero "+ player.getName() +" hits with a " + player.getWeaponName()+ " and is dealing "+ damage + " damage to the "+ monster.getMonsterName());
-//				monster.setHp(monster.getMonsterHp() - damage);			
+				GUI.printTextArea(("Hero "+ player.getName() +" hits with a " + player.getWeaponName()+ " and is dealing "+ damage + " damage to the "+ monster.getName()));
+				monster.setHp(monster.getHp() - damage);			
 			}
 			else {
-				//GUI.printTextArea("You have been slayed by the %s",monster.getMonsterName());
+				GUI.printTextArea(player.getName() + " have been slayed by the " +monster.getName());
 				player.setHp(0);
 				if (player.getHealingPotions() > 0) {
 					//System.out.println("Do you want to use a potion? y/n ");
@@ -41,18 +41,14 @@ public class Battle {
 				}
 			}
 			
-			//damage = hitFor(monster.getMonsterAttackPoints() - player.getPlayerToughness());
+			damage = hitFor(monster.getAttackPoints() - player.getPlayerToughness());
 			if (monster.isAlive()) {
-				//System.out.printf("%s hits for %s damage to the hero %s%n",monster.getMonsterName() ,damage ,player.getName());
+				GUI.printTextArea((monster.getName() + " hits for "+ damage + "damage to " + player.getName()));
 				player.setHp(player.getHp()-damage);
-				//if (monster.getMonsterName().equalsIgnoreCase("Vampire Bat")) {
-					int vampireBit = damage /3;
-					//System.out.printf("%s restor %s helth from biting you%n",monster.getMonsterName(),vampireBit);
-					//monster.setHp(monster.getMonsterHp()+vampireBit);
 				}
 				
 				if (!player.isAlive()) {
-						//System.out.printf("You have been slayed by the %s",monster.getMonsterName());
+					GUI.printTextArea("You have been slayed by the " +monster.getName());
 						player.setHp(0);
 						if (player.getHealingPotions() > 0) {
 							System.out.println("Do you want to use a potion? y/n ");

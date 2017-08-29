@@ -43,10 +43,10 @@ public class Player extends LivingEntity {
 //
 	}
 	
-	public static Player getInstance(String name){
+	public static Player getInstance(){
 		
 		if (player == null){
-			player = new Player(name);
+			player = new Player("");
 		}
 		return player;
 	}
