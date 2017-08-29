@@ -1,5 +1,7 @@
 package model;
 
+import view.GUI;
+
 public class Player extends LivingEntity {
 
 //	static ArrayList<Item> playersInventory = new ArrayList<Item>();
@@ -281,10 +283,10 @@ public class Player extends LivingEntity {
 			level++;
 			nextLevel *= 2;
 			hp = 200;
-			System.out.printf("You have levled up and are now level %s%n",level);
+			GUI.printTextArea("You have levled up and are now level " + level);
 			
-			if (level >= 10) {
-				System.out.println("You win the game!!");
+			if (level >= 100) {
+				GUI.printTextArea("You win the game!!");
 				System.exit(0);
 			}	
 		}
@@ -302,7 +304,7 @@ public class Player extends LivingEntity {
 				int normalHealingPotion = 20;
 				if (getHp() >= getPlayerMaxhealth()) {
 					setHp(playerMaxhealth);
-					System.out.println("Your helth is now: "+getHp());
+					GUI.printTextArea("Your helth is now: "+getHp());
 					break;
 				}
 				else {
@@ -310,18 +312,18 @@ public class Player extends LivingEntity {
 					setHealingPotions(getHealingPotions() -1);
 					if (getHp() >= getPlayerMaxhealth()) {
 						setHp(playerMaxhealth);
-						System.out.println("Your helth is now: "+getHp());
+						GUI.printTextArea("Your helth is now: "+getHp());
 						break;
 					}	
-					System.out.println("Your helth is now: "+getHp());
+					GUI.printTextArea("Your helth is now: "+getHp());
 				}
 					
 			}
 			else {
-				System.out.println("You dont have any potions left");
+				GUI.printTextArea("You dont have any potions left");
 				}
 			if (healthPotain>0 && getHp()<playerMaxhealth) {
-				System.out.println("Do you want to use more healing potion? y/n");
+				GUI.printTextArea("Do you want to use more healing potion? y/n");
 				input = "";
 			}
 	
@@ -368,11 +370,11 @@ public void playersStatusPoints(int statsPoints) {
 		statsPoints += playerStatsPoints;
 		while (statsPoints>0) {
 			
-			System.out.printf("Do you want to use your %s points? y/n ", statsPoints);
+			GUI.printTextArea("Do you want to use your " + statsPoints +" points? y/n");
 			String input = "";
 			if (input.equalsIgnoreCase("y")) {
 				
-			System.out.println("What stats do you want to incress? "
+				GUI.printTextArea("What stats do you want to incress? "
 						+ "\n0: Save points for later."
 						+ "\n1: Strength"
 						+ "\n2: Toughness"
@@ -383,10 +385,10 @@ public void playersStatusPoints(int statsPoints) {
 				if (statusInput == 0) {
 						playersStatusPoints(getPlayerStatsPoints() + statsPoints);
 				}
-			System.out.print("How many point do you want to spend? ");
+				GUI.printTextArea("How many point do you want to spend? ");
 				int numbers = 0;
 				if (numbers > statsPoints) {
-					System.out.println("You do not have that many points ");
+					GUI.printTextArea("You do not have that many points ");
 				}
 				else {
 						 if(statusInput == 1){

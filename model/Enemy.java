@@ -15,7 +15,6 @@ public abstract class Enemy extends LivingEntity{
 
 	private static String nameGenerator(){
 		String name = name01[RandomClass.getInt(0, 9)] + name02[RandomClass.getInt(0, 9)];
-		System.out.println(name);
 		return name;
 	}
 	

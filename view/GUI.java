@@ -92,12 +92,7 @@ public class GUI extends Application{
 		        		
 		        		);
 		        
-		        
-		        vBoxRight.getChildren().add(attackButton);
-		        attackButton.setPrefSize(100, 40);
-		        attackButton.setStyle("-fx-background-color: #686B7F");
-		        attackButton.setOnAction(e -> textarea.setText( "Attack!!! \n" + textarea.getText()));
-		        
+		        		        
 		        vBoxRight.getChildren().add(shopButton);
 		        shopButton.setPrefSize(100, 40);
 		        shopButton.setStyle("-fx-background-color: #686B7F");

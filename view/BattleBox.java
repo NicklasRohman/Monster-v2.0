@@ -30,7 +30,8 @@ public class BattleBox {
 	
 		alertWindow.initModality(Modality.APPLICATION_MODAL);
 		alertWindow.setTitle(title);
-		alertWindow.setMinWidth(250);
+		alertWindow.setMinWidth(450);
+		alertWindow.setMinHeight(200);
 		
 		Label label = new Label();
 		label.setText(message);
