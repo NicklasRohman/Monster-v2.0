@@ -41,4 +41,8 @@ public abstract class Enemy extends LivingEntity{
 		name02[8] = "Trollsson";
 		name02[9] = "Halte";
 	}
+	
+	public int generateGold() {
+		return RandomClass.getInt(0, 20) * level;
+	}
 }
