@@ -147,7 +147,6 @@ public class GUI extends Application {
 		NameBox nameBox = NameBox.getInstance();
 		textarea.setText("A new hero named " + nameBox.display("Character Name", "What will the hero name be?")
 				+ " have emerged!!");
-
 	}
 
 	public void inventory() {
