@@ -1,11 +1,14 @@
 package controller;
 
 import model.Enemy;
+import model.Item;
+import model.ItemGenerator;
 import model.Player;
 import model.RandomClass;
 import view.BattleBox;
 import view.DeadBox;
 import view.GUI;
+import view.NoPotionsBox;
 import view.UsePotain;
 
 public class Battle {
@@ -13,7 +16,8 @@ public class Battle {
 	static Battle battle;
 	BattleBox battleBox = BattleBox.getInstance();
 	DeadBox deadbox = DeadBox.getInstance();
-	
+	NoPotionsBox noPotionsBox = NoPotionsBox.getInstance();
+
 	public static Battle getInstance() {
 		if (battle == null) {
 			battle = new Battle();
@@ -74,8 +78,10 @@ public class Battle {
 							+ coin + " coins ");
 					boolean magicFind = RandomClass.magicFind(player);
 					if (magicFind) {
-						// System.out.printf("The %s alsow drops a %s
-						// +%s%n",monster.getMonsterName(),item.getItemName(),item.getItemPoints());
+						ItemGenerator itemGenerator = new ItemGenerator();
+						Item item = itemGenerator.generateItem();
+						GUI.printTextArea(
+								monster.getName() + "alsow drops a " + item.getName() + item.getAttackPower());
 						// System.out.printf("Do you want to use this %s? y/n
 						// ",item.getItemName());
 						String input1 = "";
@@ -91,21 +97,21 @@ public class Battle {
 				}
 
 				if (monster.isAlive()) {
-					 battleBox.display("The fight isnt over yet",
-					 player.getName() + " Hp: " + player.getHp() +" and "+
-					 monster.getName() + " Hp " + monster.getHp());
+					answer = battleBox.display("The fight isnt over yet", player.getName() + " Hp: " + player.getHp() + " and "
+							+ monster.getName() + " Hp " + monster.getHp());
 
 				}
-
-			} else if (answer == 2) {
+			} if (answer == 2) {
 				usePotions(player);
-			}
-
-			else if (answer == 3) {
-				GUI.printTextArea(monster.getName() + " shouts after you: Caword!!!!! ");
+				answer = 0;
 				break;
 			}
 
+			if (answer == 3) {
+				GUI.printTextArea(monster.getName() + " shouts after you: Caword!!!!! ");
+				answer = 0;
+
+			}
 		} while (player.isAlive() && monster.isAlive());
 	}
 
@@ -124,14 +130,14 @@ public class Battle {
 	}
 
 	public void usePotions(Player player) {
-		boolean inputHealing = usePotain.display("Medic time!!", "Use a healing potion? ");
-		if (inputHealing) {
-			if (player.getHealingPotions() > 0) {
+		if (player.getHealingPotions() > 0) {
+			boolean inputHealing = usePotain.display("Medic time!!", "Use a healing potion? ");
+			if (inputHealing) {
 				player.restorHealt(player.getHealingPotions());
-
-			} else {
-				GUI.printTextArea("you do not have any more healing potions");
 			}
+		} else {
+			GUI.printTextArea("you do not have any more healing potions");
+			noPotionsBox.display();
 		}
 	}
 }
