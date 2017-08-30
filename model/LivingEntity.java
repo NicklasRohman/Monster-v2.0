@@ -22,7 +22,7 @@ public abstract class LivingEntity {
 		
 	}
 	
-	private String weaponName;
+	private String weaponName = "walking stick";
 	
 	private int attackPoints,weaponAP,playerMaxhealth,playerStatsPoints;
 	private int helm,shoulders,coat,gloves,leggings,boots,totalArmor;
