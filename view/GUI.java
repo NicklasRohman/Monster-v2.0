@@ -32,11 +32,7 @@ public class GUI extends Application{
 
 		    @Override
 		    public void start(Stage primaryStage) throws Exception {
-		        
-		    	
-		    	
-		    	
-		    	
+
 		    	try {
 		        	
 		        	adventureButton = new Button("Adventure");

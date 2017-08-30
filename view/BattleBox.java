@@ -53,7 +53,7 @@ public class BattleBox {
 		});
 		
 		runAwayButton.setOnAction(e ->{
-			answer = 2;
+			answer = 3;
 			alertWindow.close();
 			
 		});
