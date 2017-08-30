@@ -38,7 +38,7 @@ public class Adventure {
 	
 
 	public String goAdventuring(){
-		boolean happening = RandomClass.getAdvetureChance();
+		boolean happening = RandomClass.getChance(0.9);
 		
 		if (happening) {
 			setAdventureWalk(RandomClass.getInt(0, adventureList.size()));	

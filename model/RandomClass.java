@@ -13,8 +13,8 @@ public class RandomClass {
 	* Method that returns 90% true else false.
 	* @return true/false.
 	*/
-	public static boolean getAdvetureChance(){
-		return random.nextDouble()<0.9;
+	public static boolean getChance(double chans){
+		return random.nextDouble()<chans;
 	}
 	
 	/**
@@ -28,5 +28,12 @@ public class RandomClass {
 		return min+random.nextInt(max-min);
 	
 }
+	public static boolean magicFind(Player p){
+		boolean magicFind = getChance(p.getPlayerLuck()/100);
+		
+		return magicFind;
+	}
+	
+	
 	
 }

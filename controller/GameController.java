@@ -37,7 +37,7 @@ public class GameController {
 			ConfirmBox confrim = ConfirmBox.getInstance();
 			GUI.printTextArea(adventureLog);
 			if (confrim.display("You se somthing", adventureLog)) {
-				if (RandomClass.getAdvetureChance()) {
+				if (RandomClass.getChance(0.9)) {
 					battle.battle(player, new EasyEnemy(player.getLevel()));
 				} else {
 					GUI.printTextArea("You found nothing");

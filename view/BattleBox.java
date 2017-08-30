@@ -36,7 +36,7 @@ public class BattleBox {
 		Label label = new Label();
 		label.setText(message);
 			
-		Button attackButton = new Button("attack"); 
+		Button attackButton = new Button("Attack"); 
 		Button healingButton = new Button("Heal your wounds");
 		Button runAwayButton = new Button("Run Away");
 		

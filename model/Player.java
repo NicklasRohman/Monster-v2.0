@@ -159,8 +159,8 @@ public class Player extends LivingEntity {
 		return "test";
 	}
 	
-	public int addGold(){
-		return 0;
+	public int addGold(int i){
+		return i;
 	}
 	
 	public int removeGold(){
