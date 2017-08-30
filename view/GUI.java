@@ -7,6 +7,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -30,6 +32,7 @@ public class GUI extends Application{
 	static Label textarea;
 	
 	public GUI() {
+		
 	}	
 	
 	public void startGui(String[] args){
@@ -63,11 +66,14 @@ public class GUI extends Application{
 		        col2.setPercentWidth(25/100);
 
 		        pane.getColumnConstraints().addAll(col1, col2, col3);
-		        playerIcon = addLabel("PlayerIcon", "F03900", "686B7F", 150, 150);
+		        playerIcon = addLabel("", "F03900", "686B7F", 150, 150);
 		        playerName = addLabel("PlayerName", "F03900",  "C4CAF0", 150, 40);
 		        spacing = addLabel("", "F03900",   "343640",150, 220);
-		        enemyIcon = addLabel("EnemyIcon", "F03900",  "686B7F", 150, 150);
+		        enemyIcon = addLabel("", "F03900",  "686B7F", 150, 150);
 		        enemyName = addLabel("EnemyName", "F03900",  "C4CAF0", 150, 40);
+		        
+				this.setPlayerImage();
+				this.setEnemyImage();
 		        
 		        VBox vBoxLeft = new VBox();
 		        vBoxLeft.setSpacing(20);
@@ -149,4 +155,20 @@ public class GUI extends Application{
 		    	this.enemyName.setText(enemyName);
 		    }
 	
+		    public void setPlayerImage() {
+		        Image image = new Image(getClass().getResourceAsStream("../baman.jpg"));
+		        ImageView imw = new ImageView(image);
+		        imw.setFitHeight(150);
+		        imw.setFitWidth(150);
+		        playerIcon.setGraphic(imw);
+		    }
+		    public void setEnemyImage() {
+		        Image image = new Image(getClass().getResourceAsStream("../piderman.jpg"));
+		        ImageView imw = new ImageView(image);
+		        imw.setFitHeight(150);
+		        imw.setFitWidth(150);
+		        enemyIcon.setGraphic(imw);
+		    }
+		    
+		    
 	}
