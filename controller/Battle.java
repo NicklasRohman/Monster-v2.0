@@ -37,7 +37,7 @@ public class Battle {
 				"A strange figure appear, it's " + monster.getName() + " What are you going to do?");
 		do {
 			if (answer == 1) {
-
+				
 				int damage = hitFor(player.getAttackPoints() + player.getPlayerStrength() + player.getWeaponAP());
 				if (player.isAlive()) {
 					GUI.printTextArea(("Hero " + player.getName() + " hits with a " + player.getWeaponName()

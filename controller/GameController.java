@@ -2,7 +2,6 @@ package controller;
 
 import model.Adventure;
 import model.EasyEnemy;
-import model.Item;
 import model.Player;
 import model.RandomClass;
 import view.ConfirmBox;

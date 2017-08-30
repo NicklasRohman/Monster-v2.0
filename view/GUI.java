@@ -13,6 +13,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Player;
 
 public class GUI extends Application{
 	GameController gameController = GameController.getInstance();
@@ -143,8 +144,9 @@ public class GUI extends Application{
 		    
 		    public void playerName(){
 		    	NameBox nameBox = NameBox.getInstance();
-				textarea.setText("A new hero named " + nameBox.display("Character Name", "What will the hero name be?") + " have emerged!!");
-		    
+				Player player = Player.getInstance();
+		    	textarea.setText("A new hero named " + nameBox.display("Character Name", "What will the hero name be?") + " have emerged!!");
+				playerName.setText(player.getName());
 		    }
 		    
 		    public void setPlayerLabel(String playerName) {

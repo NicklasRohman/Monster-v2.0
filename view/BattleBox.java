@@ -40,6 +40,7 @@ public class BattleBox {
 		Button healingButton = new Button("Heal your wounds");
 		Button runAwayButton = new Button("Run Away");
 		
+		//attackButton.
 		attackButton.setOnAction(e ->{
 			answer = 1;
 			alertWindow.close();
