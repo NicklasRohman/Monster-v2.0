@@ -14,7 +14,7 @@ public abstract class Enemy extends LivingEntity{
 	}
 
 	private static String nameGenerator(){
-		String name = name01[RandomClass.getInt(0, 9)] + name02[RandomClass.getInt(0, 9)];
+		String name = name01[RandomClass.getInt(0, name01.length)] + name02[RandomClass.getInt(0, name02.length)];
 		return name;
 	}
 	
@@ -40,5 +40,9 @@ public abstract class Enemy extends LivingEntity{
 		name02[7] = "Drakeld";
 		name02[8] = "Trollsson";
 		name02[9] = "Halte";
+	}
+	
+	public int generateGold() {
+		return RandomClass.getInt(0, 20) * level;
 	}
 }
