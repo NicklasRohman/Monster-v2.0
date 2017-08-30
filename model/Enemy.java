@@ -2,8 +2,8 @@ package model;
 
 public abstract class Enemy extends LivingEntity{
 
-	private static String[] name01 = new String[10];
-	private static String[] name02 = new String[10];	
+	private static String[] name01 = new String[20];
+	private static String[] name02 = new String[20];	
 	
 	
 	
@@ -29,8 +29,19 @@ public abstract class Enemy extends LivingEntity{
 		name01[7] = "Spindeln ";
 		name01[8] = "Draken ";
 		name01[9] = "Trollet ";
+		name01[10] = "Idioten ";
+		name01[11] = "Prästen ";
+		name01[12] = "Halvmannen ";
+		name01[13] = "Fyllot ";
+		name01[14] = "Bergakungen ";
+		name01[15] = "Arne ";
+		name01[16] = "Balder ";
+		name01[17] = "Ulven ";
+		name01[18] = "Hunden ";
+		name01[19] = "Tomten ";
+
 		
-		name02[0] = "Rödskägg";
+		name02[0] = "Rövskägg";
 		name02[1] = "Korvballe";
 		name02[2] = "Dödsnäven";
 		name02[3] = "Orcbane";
@@ -40,6 +51,16 @@ public abstract class Enemy extends LivingEntity{
 		name02[7] = "Drakeld";
 		name02[8] = "Trollsson";
 		name02[9] = "Halte";
+		name02[10] = "Snedpung";
+		name02[11] = "Halvröv";
+		name02[12] = "Treballe";
+		name02[13] = "Tuttlisa";
+		name02[14] = "Snuskgubbe";
+		name02[15] = "Dumskalle";
+		name02[16] = "Stornäsan";
+		name02[17] = "Ballslmackarn";
+		name02[18] = "Skrumplever";
+		name02[19] = "Snorstjärt";
 	}
 	
 	public int generateGold() {
