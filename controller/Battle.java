@@ -25,12 +25,13 @@ public class Battle {
 	}
 
 	public void battle(Player player, Enemy monster) {
+		
 		GUI.printTextArea("A strange figure appear, it's " + monster.getName() + " What are you going to do?");
 		int answer = battleBox.display("Ohh Shit!!",
 				"A strange figure appear, it's " + monster.getName() + " What are you going to do?");
-
+		do {
 		if (answer == 1) {
-			do {
+			
 				int damage = hitFor(player.getAttackPoints() + player.getPlayerStrength() + player.getWeaponAP());
 				if (player.isAlive()) {
 					// GUI.printTextArea(("Hero "+ player.getName() +" hits with
@@ -93,7 +94,7 @@ public class Battle {
 						String input = "";
 						if (input.equalsIgnoreCase("y")) {
 
-							// player.useItem(item.getItemName(),item.getItemPoints());
+							 //player.useItem(item.getItemName(),item.getItemPoints());
 
 						}
 					}
@@ -103,17 +104,15 @@ public class Battle {
 				}
 
 				if (monster.isAlive()) {
-					battleBox.display("The fight isnt over yet", player.getName() + "Hp:" + player.getHp() +" and "+ monster.getName() + "Hp" + monster.getHp());
-					System.out.printf("\nContinue fighting press Enter" + "\nR. for run away "
-							+ "\nH. to use healing Potion (" + player.getHealingPotions() + ")\n");
+//					battleBox.display("The fight isnt over yet", player.getName() + "Hp:" + player.getHp() +" and "+ monster.getName() + "Hp" + monster.getHp());
 
 					boolean input;
 					if (input = false) {
 						break;
 					} else {
 						do {
-							input = usePotain.display("Medic time!!", "Use more healing potion? y/n");
-							usePotain.display("Medic time!!", "Use more healing potion? y/n");
+							input = usePotain.display("Medic time!!", "Use a healing potion? y/n");
+							usePotain.display("Medic time!!", "Use a healing potion? y/n");
 							if (input) {
 								if (player.getHealingPotions() > 0) {
 									player.restorHealt(player.getHealingPotions());	
@@ -128,15 +127,21 @@ public class Battle {
 
 					}
 				}
-			} while (player.isAlive() && monster.isAlive());
+			
 		}
-		if (answer == 2) {
+		else if (answer == 2) {
 			player.restorHealt(player.getHealingPotions());
 			if (player.getHealingPotions() > 0) {
-				usePotain.display("Medic time!!", "Use more healing potion? y/n");
-			boolean	input = usePotain.display("Medic time!!", "Use more healing potion? y/n");
+				usePotain.display("Medic time!!", "Use a healing potion? y/n");
+			boolean	input = usePotain.display("Medic time!!", "Use a healing potion? y/n");
 			}
 		}
+		else if(answer == 3){
+			GUI.printTextArea(monster.getName() + " shouts after you: Coword!!!!! ");
+			break;
+		}
+		
+		} while (player.isAlive() && monster.isAlive());
 	}
 
 	private int hitFor(int d) {
