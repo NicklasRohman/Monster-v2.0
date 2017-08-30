@@ -21,6 +21,12 @@ public class GUI extends Application{
 	Button characterButton;
 	Button shopButton;
 	
+	Label playerIcon;
+    Label playerName;
+    Label spacing;
+    Label enemyIcon;
+    Label enemyName;
+	
 	static Label textarea;
 	
 	public GUI() {
@@ -57,19 +63,21 @@ public class GUI extends Application{
 		        col2.setPercentWidth(25/100);
 
 		        pane.getColumnConstraints().addAll(col1, col2, col3);
-
-		        Label playerIcon = addLabel("PlayerIcon", "686B7F", 150, 150);
-		        Label EnemyIcon = addLabel("EnemyIcon", "686B7F", 150, 150);
+		        playerIcon = addLabel("PlayerIcon", "F03900", "686B7F", 150, 150);
+		        playerName = addLabel("PlayerName", "F03900",  "C4CAF0", 150, 40);
+		        spacing = addLabel("", "F03900",   "343640",150, 220);
+		        enemyIcon = addLabel("EnemyIcon", "F03900",  "686B7F", 150, 150);
+		        enemyName = addLabel("EnemyName", "F03900",  "C4CAF0", 150, 40);
 		        
 		        VBox vBoxLeft = new VBox();
-		        vBoxLeft.setSpacing(300);
+		        vBoxLeft.setSpacing(20);
 		        vBoxLeft.setPadding(new Insets(75, 25, 75, 25));
 		        
-		        vBoxLeft.getChildren().addAll(playerIcon,EnemyIcon);
+		        vBoxLeft.getChildren().addAll(playerIcon, playerName, spacing,enemyIcon, enemyName);
 		        
 		        VBox vBoxRight = new VBox();
 		        vBoxRight.setSpacing(15);
-		        vBoxRight.setPadding(new Insets(75, 75, 50, 25));
+		        vBoxRight.setPadding(new Insets(75, 50, 50, 25));
 		        textarea.setMinSize(750, 600);
 		        textarea.setMaxSize(750, 600);
 		        textarea.setStyle("-fx-background-color: #FFFFFF -fx-text");
@@ -80,8 +88,8 @@ public class GUI extends Application{
 		        pane.add(vBoxRight, 2, 0);
 
 		        vBoxRight.getChildren().add(adventureButton);
-		        adventureButton.setPrefSize(100, 40);
-		        adventureButton.setStyle("-fx-background-color: #686B7F");
+		        adventureButton.setPrefSize(120, 40);
+		        adventureButton.setStyle("-fx-text-fill: #F03900;-fx-background-color: #686B7F;");
 		        adventureButton.setOnAction(e -> 
 		        		
 		        		gameController.adventureBtn()
@@ -90,18 +98,18 @@ public class GUI extends Application{
 		        
 		        		        
 		        vBoxRight.getChildren().add(shopButton);
-		        shopButton.setPrefSize(100, 40);
-		        shopButton.setStyle("-fx-background-color: #686B7F");
+		        shopButton.setPrefSize(120, 40);
+		        shopButton.setStyle("-fx-text-fill: #F03900;-fx-background-color: #686B7F;");
 		        shopButton.setOnAction(e -> textarea.setText("Show me your money!!!\n" + textarea.getText()));
 		        
 		        vBoxRight.getChildren().add(inventoryButton);
-		        inventoryButton.setPrefSize(100, 40);
-		        inventoryButton.setStyle("-fx-background-color: #686B7F");
+		        inventoryButton.setPrefSize(120, 40);
+		        inventoryButton.setStyle("-fx-text-fill: #F03900;-fx-background-color: #686B7F;");
 		        inventoryButton.setOnAction(e -> textarea.setText("Lets se what we have here.\n" + textarea.getText()));
 		        
 		        vBoxRight.getChildren().add(characterButton);
-		        characterButton.setPrefSize(100, 40);
-		        characterButton.setStyle("-fx-background-color: #686B7F");
+		        characterButton.setPrefSize(120, 40);
+		        characterButton.setStyle("-fx-text-fill: #F03900;-fx-background-color: #686B7F;");
 		        characterButton.setOnAction(e -> textarea.setText("Thats me. :D\n" + textarea.getText()));
 		        
 		        Scene scene = new Scene(pane, 1200, 800);
@@ -115,9 +123,10 @@ public class GUI extends Application{
 		        }
 		    }
 		    
-		    public Label addLabel(String text, String color, double x, double y) {
+		    public Label addLabel(String text, String textColor, String color, double x, double y) {
 		        Label label = new Label(text);
-		        label.setStyle("-fx-background-color: #" + color + ";");
+		        
+		        label.setStyle("-fx-background-color: #" + color + "; -fx-text-fill: #" + textColor + "; -fx-background-radius: 3;");
 		        label.setPrefSize(x, y);
 		        return label;
 		    }
@@ -130,6 +139,14 @@ public class GUI extends Application{
 		    	NameBox nameBox = NameBox.getInstance();
 				textarea.setText("A new hero named " + nameBox.display("Character Name", "What will the hero name be?") + " have emerged!!");
 		    
+		    }
+		    
+		    public void setPlayerLabel(String playerName) {
+		    	this.playerName.setText(playerName);
+		    }
+		    
+		    public void setEnemyName(String enemyName) {
+		    	this.enemyName.setText(enemyName);
 		    }
 	
 	}
