@@ -45,4 +45,8 @@ public abstract class Enemy extends LivingEntity{
 	public int generateGold() {
 		return RandomClass.getInt(0, 20) * level;
 	}
+	
+	public int generateXp() {
+		return RandomClass.getInt(0, 20) * (level * 2);
+	}
 }
