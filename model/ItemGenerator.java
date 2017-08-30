@@ -29,7 +29,7 @@ public class ItemGenerator {
 	}
 	
 	private String setType() {
-		int index = RandomClass.getInt(0, 11);
+		int index = RandomClass.getInt(0, 10);
 		switch(index) {
 			case 1:
 				//Sword
@@ -69,7 +69,7 @@ public class ItemGenerator {
 	}
 	
 	private String generateName(String type) {
-		return type + " " + secondName[RandomClass.getInt(0, 11)];
+		return type + " " + secondName[RandomClass.getInt(0, secondName.length)];
 	}
 	
 	private void setSecondName() {
