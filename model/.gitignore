@@ -9,3 +9,6 @@
 /EasyEnemy.class
 /Item.class
 /AbstractInventory.class
+/Inventory.class
+/HardEnemy.class
+/MediumEnemy.class

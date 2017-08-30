@@ -40,4 +40,28 @@ public abstract class AbstractInventory {
 			spearList.add(item);
 		}
 	}
+	
+	public void removeItem(String type, int index) {
+		if(type.equals("Helmet")) {
+			helmetList.remove(index);
+		}
+		else if(type.equals("Armor")) {
+			armorList.remove(index);
+		}
+		else if(type.equals("Trousers")) {
+			trouserList.remove(index);
+		}
+		else if(type.equals("Gloves")) {
+			gloveList.remove(index);
+		}
+		else if(type.equals("Sword")) {
+			swordList.remove(index);
+		}
+		else if(type.equals("Axe")) {
+			axeList.remove(index);
+		}
+		else if(type.equals("Spear")) {
+			spearList.remove(index);
+		}
+	}
 }
