@@ -33,7 +33,7 @@ public class Battle {
 		GUI.setEnemyName(monster.getName());
 		GUI.printTextArea("A strange figure appear, it's " + monster.getName() + " What are you going to do?");
 		int answer = battleBox
-				.display("A strange figure appear, it's " + monster.getName() + " What are you going to do?");
+				.display("A strange figure appear, it's " + monster.getName() + "\nWhat are you going to do?");
 
 		do {
 			if (answer == 1) {
@@ -96,7 +96,9 @@ public class Battle {
 			}
 			if (answer == 2) {
 				usePotions(player);
-				answer = 1;
+				GUI.printTextArea("What are you going to do now " + monster.getName() + " asks you?");
+				answer = battleBox.display("What are you going to do now " + monster.getName() + "\nasks you?");
+
 			}
 
 			if (answer == 3) {

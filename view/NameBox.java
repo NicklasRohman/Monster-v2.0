@@ -1,12 +1,13 @@
 package view;
 
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -45,6 +46,7 @@ public class NameBox {
 			
 		Button okButton = new Button("Ok"); 
 		TextField nameInput  = new TextField();
+		nameInput.setMaxWidth(300);
 		Player p = Player.getInstance();
 		okButton.setOnAction(e ->{
 			
@@ -53,14 +55,25 @@ public class NameBox {
 			
 		});
 		
-		VBox layout = new VBox(20);
-		layout.setPadding(new Insets(20,20,20,20));
-		layout.getChildren().addAll(label,nameInput,okButton);
-		layout.setAlignment(Pos.CENTER);
+		VBox centerLayout = new VBox(10);
+		centerLayout.getChildren().addAll(label,nameInput);
+		centerLayout.setAlignment(Pos.CENTER);
 		
-		Scene scen = new Scene(layout);
+		HBox bottomLayout = new HBox();
+		bottomLayout.getChildren().addAll(okButton);
+		bottomLayout.setAlignment(Pos.CENTER);
+		bottomLayout.getStyleClass().add("bottomLayout");
+		
+		BorderPane borderPane = new BorderPane();
+		borderPane.setCenter(centerLayout);
+		borderPane.setBottom(bottomLayout);
+		borderPane.getStyleClass().add("borderPane");
+		
+		Scene scen = new Scene(borderPane);
+		scen.getStylesheets().add("monster.css");
 		alertWindow.setScene(scen);
 		alertWindow.showAndWait();
+
 		return p.getName();
 	}
 }

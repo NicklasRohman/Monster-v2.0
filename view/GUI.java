@@ -88,6 +88,7 @@ public class GUI extends Application {
 			textarea.setMinSize(750, 600);
 			textarea.setMaxSize(750, 600);
 			textarea.setStyle("-fx-background-color: #FFFFFF -fx-text");
+			textarea.getStyleClass().add("textarea");
 			textarea.setAlignment(Pos.TOP_LEFT);
 			textarea.setWrapText(true);
 			pane.add(vBoxLeft, 0, 0);
@@ -119,6 +120,7 @@ public class GUI extends Application {
 			characterButton.setOnAction(e -> textarea.setText("Thats me. :D\n" + textarea.getText()));
 
 			Scene scene = new Scene(pane, 1200, 800);
+			scene.getStylesheets().add("monster.css");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			playerName();

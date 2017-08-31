@@ -1,0 +1,27 @@
+.root{
+	
+		-fx--region-background-radius:10; 
+}
+.borderPane{
+	-fx-font-size: 16;
+	-fx-background-color: #deb887;
+	-fx-border-color:#050505; 
+	-fx-border-style:solid; 
+	-fx-border-width:2;  
+	-fx-border-radius: 10;
+	-fx-background-insets:10; 
+}
+.textarea{
+	-fx-font-size: 16;
+	-fx-background-color: #deb887;
+	-fx-border-color:#050505; 
+	-fx-border-style:solid; 
+	-fx-border-width:2; 
+	-fx-border-radius: 10;
+	-fx-owerflow:hidden;
+		
+}
+.bottomLayout{
+	-fx-padding: 50;
+	-fx-spacing: 10;
+	}
