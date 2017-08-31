@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ConfirmBox {
 
@@ -24,13 +25,13 @@ public class ConfirmBox {
 		return confirmBox;
 	}
 
-	public boolean display(String title, String message){
+	public boolean display(String message){
 		Stage alertWindow = new Stage();
 	
 		alertWindow.initModality(Modality.APPLICATION_MODAL);
-		alertWindow.setTitle(title);
-		alertWindow.setMinWidth(350);
-		alertWindow.setMinHeight(200);
+		alertWindow.setWidth(450);
+		alertWindow.setHeight(300);
+		alertWindow.initStyle(StageStyle.UNDECORATED);
 		
 		Label label = new Label();
 		label.setText(message);

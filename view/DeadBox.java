@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class DeadBox {
 
@@ -28,9 +29,9 @@ public class DeadBox {
 		Stage alertWindow = new Stage();
 	
 		alertWindow.initModality(Modality.APPLICATION_MODAL);
-		alertWindow.setTitle("Dead Man Walking");
-		alertWindow.setMinWidth(350);
-		alertWindow.setMinHeight(200);
+		alertWindow.setWidth(350);
+		alertWindow.setHeight(200);
+		alertWindow.initStyle(StageStyle.UNDECORATED);
 		
 		Label label = new Label();
 		label.setText("You do not have any potions, so You are DEAD!!!");

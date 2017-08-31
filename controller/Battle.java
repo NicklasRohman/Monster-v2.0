@@ -17,6 +17,7 @@ public class Battle {
 	BattleBox battleBox = BattleBox.getInstance();
 	DeadBox deadbox = DeadBox.getInstance();
 	NoPotionsBox noPotionsBox = NoPotionsBox.getInstance();
+	UsePotain usePotain = UsePotain.getInstance();
 
 	public static Battle getInstance() {
 		if (battle == null) {
@@ -25,19 +26,18 @@ public class Battle {
 		return battle;
 	};
 
-	UsePotain usePotain = UsePotain.getInstance();
-
 	private Battle() {
 	}
 
 	public void battle(Player player, Enemy monster) {
-
+		GUI.setEnemyName(monster.getName());
 		GUI.printTextArea("A strange figure appear, it's " + monster.getName() + " What are you going to do?");
-		int answer = battleBox.display("Ohh Shit!!",
-				"A strange figure appear, it's " + monster.getName() + " What are you going to do?");
+		int answer = battleBox
+				.display("A strange figure appear, it's " + monster.getName() + " What are you going to do?");
+
 		do {
 			if (answer == 1) {
-				
+
 				int damage = hitFor(player.getAttackPoints() + player.getPlayerStrength() + player.getWeaponAP());
 				if (player.isAlive()) {
 					GUI.printTextArea(("Hero " + player.getName() + " hits with a " + player.getWeaponName()
@@ -59,7 +59,6 @@ public class Battle {
 				if (monster.isAlive()) {
 					GUI.printTextArea((monster.getName() + " hits for " + damage + " damage to " + player.getName()));
 					player.setHp(player.getHp() - damage);
-
 					if (!player.isAlive()) {
 						GUI.printTextArea("You have been slayed by the " + monster.getName());
 						player.setHp(0);
@@ -76,41 +75,33 @@ public class Battle {
 					int xp = monster.generateXp();
 					GUI.printTextArea("You have slayed " + monster.getName() + " and getting " + xp + " experiens and "
 							+ coin + " coins ");
+
 					boolean magicFind = RandomClass.magicFind(player);
 					if (magicFind) {
 						ItemGenerator itemGenerator = new ItemGenerator();
 						Item item = itemGenerator.generateItem();
 						GUI.printTextArea(
 								monster.getName() + "alsow drops a " + item.getName() + item.getAttackPower());
-						// System.out.printf("Do you want to use this %s? y/n
-						// ",item.getItemName());
-						String input1 = "";
-						if (input1.equalsIgnoreCase("y")) {
-
-							// player.useItem(item.getItemName(),item.getItemPoints());
-
-						}
 					}
 					player.Experiens(player.getExperience() + xp);
 					player.addGold(player.getGold() + coin);
-
+					GUI.setEnemyName("");
 				}
 
 				if (monster.isAlive()) {
-					answer = battleBox.display("The fight isnt over yet", player.getName() + " Hp: " + player.getHp() + " and "
-							+ monster.getName() + " Hp " + monster.getHp());
+					answer = battleBox.display(player.getName() + " Hp: " + player.getHp() + " and " + monster.getName()
+							+ " Hp " + monster.getHp());
 
 				}
-			} if (answer == 2) {
+			}
+			if (answer == 2) {
 				usePotions(player);
-				answer = 0;
-				break;
+				answer = 1;
 			}
 
 			if (answer == 3) {
 				GUI.printTextArea(monster.getName() + " shouts after you: Caword!!!!! ");
-				answer = 0;
-
+				break;
 			}
 		} while (player.isAlive() && monster.isAlive());
 	}
@@ -129,11 +120,12 @@ public class Battle {
 
 	}
 
-	public void usePotions(Player player) {
+	private void usePotions(Player player) {
 		if (player.getHealingPotions() > 0) {
-			boolean inputHealing = usePotain.display("Medic time!!", "Use a healing potion? ");
+			boolean inputHealing = usePotain.display("Medic time!! \n Use a healing potion? ");
 			if (inputHealing) {
 				player.restorHealt(player.getHealingPotions());
+				player.setHealingPotions(player.getHealingPotions() - 1);
 			}
 		} else {
 			GUI.printTextArea("you do not have any more healing potions");

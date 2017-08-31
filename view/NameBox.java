@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Player;
 
 public class NameBox {
@@ -30,14 +31,14 @@ public class NameBox {
 		return nameBox;
 	}
 
-	public String display(String title, String message){
+	public String display(String message){
 		
 		alertWindow = new Stage();
 	
 		alertWindow.initModality(Modality.APPLICATION_MODAL);
-		alertWindow.setTitle(title);
-		alertWindow.setMinWidth(350);
-		alertWindow.setMinHeight(200);
+		alertWindow.setHeight(300);
+		alertWindow.setWidth(400);
+		alertWindow.initStyle(StageStyle.UNDECORATED);
 		
 		Label label = new Label();
 		label.setText(message);

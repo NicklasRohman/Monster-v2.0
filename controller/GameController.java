@@ -36,7 +36,7 @@ public class GameController {
 		if (adventure.getAdventureWalk() >= 0) {
 			ConfirmBox confrim = ConfirmBox.getInstance();
 			GUI.printTextArea(adventureLog);
-			if (confrim.display("You se somthing", adventureLog)) {
+			if (confrim.display(adventureLog)) {
 				if (RandomClass.getChance(0.9)) {
 					battle.battle(player, new EasyEnemy(player.getLevel()));
 				} else {

@@ -22,7 +22,7 @@ public class Player extends LivingEntity {
 		this.playerToughness = 1;
 		this.playerLuck = 1;
 		this.playerPrecision = 1;
-		this.healingPotions = 0;
+		this.healingPotions = 3;
 //		this.weaponName = "Waking Stick";
 //		this.weaponAP = 1;
 		this.playerVitality = 1;
