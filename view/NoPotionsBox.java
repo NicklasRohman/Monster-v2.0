@@ -12,6 +12,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/** 
+ * @author Nicklas
+ * Its a singleton class
+ * Handles GUI for the popup window when player don't have any potions
+ */
 public class NoPotionsBox {
 
 	static boolean answer;
@@ -20,13 +25,21 @@ public class NoPotionsBox {
 	private NoPotionsBox() {		
 	}
 	
+	/**
+	 * the method to get a instance of the class
+	 */
 	public static NoPotionsBox getInstance(){
 		if(confirmBox == null){
 			confirmBox = new NoPotionsBox();
 		}
 		return confirmBox;
 	}
-
+	
+	/**
+	 * The method display popup window
+	 * @param message What it should stand on the label 
+	 * @return boolean answer
+	 */
 	public boolean display(){
 		Stage alertWindow = new Stage();
 	

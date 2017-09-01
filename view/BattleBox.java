@@ -11,78 +11,89 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * @author Nicklas Its a singleton class Handles GUI for the popup window when
+ *         player get to choose Attack,Healing,Run
+ */
 public class BattleBox {
 
 	static int answer;
 	static BattleBox battleBox;
-	
-	
-	private BattleBox() {		
+
+	private BattleBox() {
 	}
-	
-	public static BattleBox getInstance(){
-		if(battleBox == null){
+
+	/**
+	 * The method to get a instance of the class
+	 */
+	public static BattleBox getInstance() {
+		if (battleBox == null) {
 			battleBox = new BattleBox();
 		}
 		return battleBox;
 	}
 
-	public int display(String message){
+	/**
+	 * The method display popup window
+	 * 
+	 * @param message
+	 *            What it should stand on the label
+	 * @return int answer
+	 */
+	public int display(String message) {
 
 		Stage alertWindow = new Stage();
-		
+
 		alertWindow.initModality(Modality.APPLICATION_MODAL);
 		alertWindow.setWidth(450);
 		alertWindow.setHeight(250);
 		alertWindow.initStyle(StageStyle.UNDECORATED);
-		
+
 		Label label = new Label();
 		label.setText(message);
-		
-		Button attackButton = new Button("Attack"); 
+
+		Button attackButton = new Button("Attack");
 		Button healingButton = new Button("Heal your wounds");
 		Button runAwayButton = new Button("Run Away");
-		
-		attackButton.setOnAction(e ->{
+
+		attackButton.setOnAction(e -> {
 			answer = 1;
 			alertWindow.close();
-			
+
 		});
-		
-		healingButton.setOnAction(e ->{
+
+		healingButton.setOnAction(e -> {
 			answer = 2;
 			alertWindow.close();
-			
+
 		});
-		
-		runAwayButton.setOnAction(e ->{
+
+		runAwayButton.setOnAction(e -> {
 			answer = 3;
 			alertWindow.close();
-			
+
 		});
-		
-		
+
 		VBox centerLayout = new VBox(10);
-		centerLayout.getChildren().addAll(label,attackButton);
+		centerLayout.getChildren().addAll(label, attackButton);
 		centerLayout.setAlignment(Pos.CENTER);
-		
+
 		HBox bottomLayout = new HBox();
-		bottomLayout.getChildren().addAll(attackButton,healingButton,runAwayButton);
+		bottomLayout.getChildren().addAll(attackButton, healingButton, runAwayButton);
 		bottomLayout.setAlignment(Pos.CENTER);
 		bottomLayout.getStyleClass().add("bottomLayout");
-		
+
 		BorderPane borderPane = new BorderPane();
 		borderPane.setCenter(centerLayout);
 		borderPane.setBottom(bottomLayout);
 		borderPane.getStyleClass().add("borderPane");
-		
+
 		Scene scen = new Scene(borderPane);
 		scen.getStylesheets().add("monster.css");
 		alertWindow.setScene(scen);
 		alertWindow.showAndWait();
 
-		
 		return answer;
-		
+
 	}
 }

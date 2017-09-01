@@ -11,7 +11,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/** 
+ * @author Nicklas
+ * Its a singleton class
+ * Handles GUI for the popup window when player get to choose to enter or to ignore adventure
+ */
 public class ConfirmBox {
 
 	static boolean answer;
@@ -19,7 +23,9 @@ public class ConfirmBox {
 	
 	private ConfirmBox() {		
 	}
-	
+	/**
+	 * the method to get a instance of the class
+	 */
 	public static ConfirmBox getInstance(){
 		if(confirmBox == null){
 			confirmBox = new ConfirmBox();
@@ -27,6 +33,13 @@ public class ConfirmBox {
 		return confirmBox;
 	}
 
+	/**
+	 * The method display popup window
+	 * 
+	 * @param message
+	 *            What it should stand on the label
+	 * @return boolean answer
+	 */
 	public boolean display(String message){
 		Stage alertWindow = new Stage();
 	

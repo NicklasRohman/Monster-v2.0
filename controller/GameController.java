@@ -7,6 +7,12 @@ import model.RandomClass;
 import view.ConfirmBox;
 import view.GUI;
 
+/**
+ * 
+ * @author Nicklas
+ * The main class starts the game
+ * Its a singleton class
+ */
 public class GameController {
 	static GUI gui;
 	Player player = Player.getInstance();
@@ -16,19 +22,28 @@ public class GameController {
 
 	private GameController() {
 	}
-
+	/**
+	 * the method to get a instance of the class
+	 */
 	public static GameController getInstance() {
 		if (gc == null) {
 			gc = new GameController();
 		}
 		return gc;
 	}
-
+	/**
+	 * Method that starts the game
+	 * @param args = null
+	 */
 	public static void main(String[] args) {
 		gui = new GUI();
 		gui.startGui(args);
 	}
 
+	/**
+	 * Will handle the adventure button
+	 * @return adventureLog or ""
+	 */
 	public String adventureBtn() {
 		Adventure adventure = Adventure.getInstance();
 		String adventureLog = adventure.goAdventuring();
@@ -50,4 +65,5 @@ public class GameController {
 		}
 
 	}
+	
 }

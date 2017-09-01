@@ -15,6 +15,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Player;
 
+/**
+ * 
+ * @author Nicklas och Emil
+ * GUI class handles the graphics view
+ */
 public class GUI extends Application {
 	GameController gameController = GameController.getInstance();
 
@@ -25,21 +30,21 @@ public class GUI extends Application {
 	Button shopButton;
 
 	Label playerIcon;
-	Label playerName;
 	Label spacing;
 	Label enemyIcon;
-	static Label enemyName;
 
+	static Label playerName;
+	static Label enemyName;
 	static Label textarea;
 
-	public GUI() {
-
-	}
-
+	/**
+	 *  Starts the GUI
+	 * @param args = null
+	 */
 	public void startGui(String[] args) {
 		launch(new String[] {});
 	}
-
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
@@ -68,7 +73,7 @@ public class GUI extends Application {
 
 			pane.getColumnConstraints().addAll(col1, col2, col3);
 			playerIcon = addLabel("", "F03900", "686B7F", 150, 150);
-			playerName = addLabel("PlayerName", "F03900", "C4CAF0", 150, 40);
+			setPlayerName(addLabel("PlayerName", "F03900", "C4CAF0", 150, 40));
 			spacing = addLabel("", "F03900", "343640", 150, 220);
 			enemyIcon = addLabel("", "F03900", "686B7F", 150, 150);
 			enemyName = addLabel("EnemyName", "F03900", "C4CAF0", 150, 40);
@@ -129,7 +134,36 @@ public class GUI extends Application {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Set method to player
+	 * @param name Sets the player name on the PlayerLabel
+	 */
+	public void setPlayerLabel(String playerName) {
+		GUI.playerName.setText(playerName);
+	}
+	/**
+	 * Set method to Enemy
+	 * @param name Sets the Enemy name on the EnemyLabel
+	 */
+	public static void setEnemyLabel(String Name) {
+		GUI.enemyName.setText(Name);
+	}
+	/**
+	 * Set method to player
+	 * @param name Sets the player name on the PlayerLabel
+	 */
+	public static void setPlayerName(Label name) {
+		playerName = name;
+	}
+	/**
+	 * Prints the tesxt to the textarea.
+	 * @param textToPrint the text that are printed to the textarea
+	 */
+	public static void printTextArea(String textToPrint) {
+		textarea.setText(textToPrint + "\n" + textarea.getText());
+	}
 
+	
 	private Label addLabel(String text, String textColor, String color, double x, double y) {
 		Label label = new Label(text);
 
@@ -139,29 +173,11 @@ public class GUI extends Application {
 		return label;
 	}
 
-	public static void printTextArea(String textToPrint) {
-		textarea.setText(textToPrint + "\n" + textarea.getText());
-	}
 
-	private void playerName() {
-		NameBox nameBox = NameBox.getInstance();
-		Player player = Player.getInstance();
-		textarea.setText("A new hero named " + nameBox.display("What will the hero name be?") + " have emerged!!");
-		playerName.setText(player.getName());
-	}
-
-	public void inventory() {
+	private void inventory() {
 		InventoryGUI inventoryGUI = new InventoryGUI();
 
 		inventoryGUI.display("Inventory", "The inventory of the player:");
-	}
-
-	// public void setPlayerLabel(String playerName) {
-	// this.playerName.setText(playerName);
-	// }
-
-	public static void setEnemyName(String enemyName1) {
-		enemyName.setText(enemyName1);
 	}
 
 	private void setPlayerImage() {
@@ -178,5 +194,12 @@ public class GUI extends Application {
 		imw.setFitHeight(150);
 		imw.setFitWidth(150);
 		enemyIcon.setGraphic(imw);
+	}
+
+	private void playerName() {
+		NameBox nameBox = NameBox.getInstance();
+		Player player = Player.getInstance();
+		printTextArea("A new hero named " + nameBox.display("What will the hero name be?") + " have emerged!!");
+		playerName.setText(player.getName());
 	}
 }

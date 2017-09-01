@@ -9,15 +9,19 @@ import view.BattleBox;
 import view.DeadBox;
 import view.GUI;
 import view.NoPotionsBox;
-import view.UsePotain;
-
+import view.UsePotions;
+/**
+ * 
+ * @author Nicklas
+ * BattleClass handles everything that is happening in the battle
+ */
 public class Battle {
 
 	static Battle battle;
 	BattleBox battleBox = BattleBox.getInstance();
 	DeadBox deadbox = DeadBox.getInstance();
 	NoPotionsBox noPotionsBox = NoPotionsBox.getInstance();
-	UsePotain usePotain = UsePotain.getInstance();
+	UsePotions usePotions = UsePotions.getInstance();
 
 	public static Battle getInstance() {
 		if (battle == null) {
@@ -30,7 +34,7 @@ public class Battle {
 	}
 
 	public void battle(Player player, Enemy monster) {
-		GUI.setEnemyName(monster.getName());
+		GUI.setEnemyLabel(monster.getName());
 		GUI.printTextArea("A strange figure appear, it's " + monster.getName() + " What are you going to do?");
 		int answer = battleBox
 				.display("A strange figure appear, it's " + monster.getName() + "\nWhat are you going to do?");
@@ -85,7 +89,7 @@ public class Battle {
 					}
 					player.Experiens(player.getExperience() + xp);
 					player.addGold(player.getGold() + coin);
-					GUI.setEnemyName("");
+					GUI.setEnemyLabel("");
 				}
 
 				if (monster.isAlive()) {
@@ -124,7 +128,7 @@ public class Battle {
 
 	private void usePotions(Player player) {
 		if (player.getHealingPotions() > 0) {
-			boolean inputHealing = usePotain.display("Medic time!! \n Use a healing potion? ");
+			boolean inputHealing = usePotions.display("Medic time!! \n Use a healing potion? ");
 			if (inputHealing) {
 				player.restorHealt(player.getHealingPotions());
 				player.setHealingPotions(player.getHealingPotions() - 1);

@@ -11,22 +11,33 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-public class UsePotain {
+/** 
+ * @author Nicklas
+ * Its a singleton class
+ * Handles GUI for the popup window when player whant to use any potions
+ */
+public class UsePotions {
 
 	static boolean answer;
-	static UsePotain UsePotain;
+	static UsePotions Usepotions;
 	
-	private UsePotain() {		
+	private UsePotions() {		
 	}
 	
-	public static UsePotain getInstance(){
-		if(UsePotain == null){
-			UsePotain = new UsePotain();
+	/**
+	 * the method to get a instance of the class
+	 */
+	public static UsePotions getInstance(){
+		if(Usepotions == null){
+			Usepotions = new UsePotions();
 		}
-		return UsePotain;
+		return Usepotions;
 	}
-
+	/**
+	 * The method display popup window
+	 * @param message What it should stand on the label 
+	 * @return boolean answer
+	 */
 	public boolean display(String message){
 		Stage alertWindow = new Stage();
 	
