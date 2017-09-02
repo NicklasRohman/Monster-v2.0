@@ -65,5 +65,24 @@ public class GameController {
 		}
 
 	}
+	/**
+	 * Will handle the shop button
+	 */
+	public void shopBtn(){
+		GUI.printTextArea("Show me your money!!!");
+		/**
+		 * Will handle the inventory button
+		 */
+	}
+	public void inventoryBtn(){
+		GUI.printTextArea("Lets se what we have here.");
+	}
+	/**
+	 * Will handle the character button
+	 */
+	public void characterBtn() {
+		GUI.printTextArea("Thats me. :D");
+	}
+	
 	
 }

@@ -107,6 +107,7 @@ public class Battle {
 
 			if (answer == 3) {
 				GUI.printTextArea(monster.getName() + " shouts after you: Caword!!!!! ");
+				GUI.setEnemyLabel("");
 				break;
 			}
 		} while (player.isAlive() && monster.isAlive());

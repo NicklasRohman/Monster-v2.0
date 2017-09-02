@@ -17,8 +17,7 @@ import model.Player;
 
 /**
  * 
- * @author Nicklas och Emil
- * GUI class handles the graphics view
+ * @author Nicklas och Emil GUI class handles the graphics view
  */
 public class GUI extends Application {
 	GameController gameController = GameController.getInstance();
@@ -38,13 +37,15 @@ public class GUI extends Application {
 	static Label textarea;
 
 	/**
-	 *  Starts the GUI
-	 * @param args = null
+	 * Starts the GUI
+	 * 
+	 * @param args
+	 *            = null
 	 */
 	public void startGui(String[] args) {
 		launch(new String[] {});
 	}
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
@@ -112,17 +113,17 @@ public class GUI extends Application {
 			vBoxRight.getChildren().add(shopButton);
 			shopButton.setPrefSize(120, 40);
 			shopButton.setStyle("-fx-text-fill: #F03900;-fx-background-color: #686B7F;");
-			shopButton.setOnAction(e -> textarea.setText("Show me your money!!!\n" + textarea.getText()));
+			shopButton.setOnAction(e -> gameController.shopBtn());
 
 			vBoxRight.getChildren().add(inventoryButton);
 			inventoryButton.setPrefSize(120, 40);
 			inventoryButton.setStyle("-fx-text-fill: #F03900;-fx-background-color: #686B7F;");
-			inventoryButton.setOnAction(e -> textarea.setText("Lets se what we have here.\n" + textarea.getText()));
+			inventoryButton.setOnAction(e -> gameController.inventoryBtn());
 
 			vBoxRight.getChildren().add(characterButton);
 			characterButton.setPrefSize(120, 40);
 			characterButton.setStyle("-fx-text-fill: #F03900;-fx-background-color: #686B7F;");
-			characterButton.setOnAction(e -> textarea.setText("Thats me. :D\n" + textarea.getText()));
+			characterButton.setOnAction(e -> gameController.characterBtn());
 
 			Scene scene = new Scene(pane, 1200, 800);
 			scene.getStylesheets().add("monster.css");
@@ -134,36 +135,47 @@ public class GUI extends Application {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * Set method to player
-	 * @param name Sets the player name on the PlayerLabel
+	 * 
+	 * @param name
+	 *            Sets the player name on the PlayerLabel
 	 */
 	public void setPlayerLabel(String playerName) {
 		GUI.playerName.setText(playerName);
 	}
+
 	/**
 	 * Set method to Enemy
-	 * @param name Sets the Enemy name on the EnemyLabel
+	 * 
+	 * @param name
+	 *            Sets the Enemy name on the EnemyLabel
 	 */
 	public static void setEnemyLabel(String Name) {
 		GUI.enemyName.setText(Name);
 	}
+
 	/**
 	 * Set method to player
-	 * @param name Sets the player name on the PlayerLabel
+	 * 
+	 * @param name
+	 *            Sets the player name on the PlayerLabel
 	 */
 	public static void setPlayerName(Label name) {
 		playerName = name;
 	}
+
 	/**
 	 * Prints the tesxt to the textarea.
-	 * @param textToPrint the text that are printed to the textarea
+	 * 
+	 * @param textToPrint
+	 *            the text that are printed to the textarea
 	 */
 	public static void printTextArea(String textToPrint) {
 		textarea.setText(textToPrint + "\n" + textarea.getText());
 	}
 
-	
 	private Label addLabel(String text, String textColor, String color, double x, double y) {
 		Label label = new Label(text);
 
@@ -172,7 +184,6 @@ public class GUI extends Application {
 		label.setPrefSize(x, y);
 		return label;
 	}
-
 
 	private void inventory() {
 		InventoryGUI inventoryGUI = new InventoryGUI();
