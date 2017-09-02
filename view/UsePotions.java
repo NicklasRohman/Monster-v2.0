@@ -1,5 +1,6 @@
 package view;
 
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,73 +11,82 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-/**
- * @author Nicklas Its a singleton class Handles GUI for the popup window when
- *         player is dead
+/** 
+ * @author Nicklas
+ * Its a singleton class
+ * Handles GUI for the popup window when player whant to use any potions
  */
-public class DeadBox {
+public class UsePotions {
 
 	static boolean answer;
-	static DeadBox confirmBox;
-
-	private DeadBox() {
+	static UsePotions Usepotions;
+	
+	private UsePotions() {		
 	}
-
+	
 	/**
-	 * The method to get a instance of the class
+	 * the method to get a instance of the class
 	 */
-	public static DeadBox getInstance() {
-		if (confirmBox == null) {
-			confirmBox = new DeadBox();
+	public static UsePotions getInstance(){
+		if(Usepotions == null){
+			Usepotions = new UsePotions();
 		}
-		return confirmBox;
+		return Usepotions;
 	}
-
 	/**
 	 * The method display popup window
-	 * 
+	 * @param message What it should stand on the label 
 	 * @return boolean answer
 	 */
-	public boolean display() {
+	public boolean display(String message){
 		Stage alertWindow = new Stage();
-
+	
 		alertWindow.initModality(Modality.APPLICATION_MODAL);
 		alertWindow.setWidth(350);
 		alertWindow.setHeight(250);
 		alertWindow.initStyle(StageStyle.UNDECORATED);
-
+		
 		Label label = new Label();
-		label.setText("You do not have any potions, \nso You are DEAD!!!");
-
-		Button yesButton = new Button("OK");
-
-		yesButton.setOnAction(e -> {
+		label.setText(message);
+			
+		Button yesButton = new Button("Yes"); 
+		Button noButton = new Button("No");
+		
+		yesButton.setOnAction(e ->{
 			answer = true;
 			alertWindow.close();
-
+			
 		});
-
+		
+		noButton.setOnAction(e ->{
+			answer = false;
+			alertWindow.close();
+			
+		});
+		
+		
+		
 		VBox centerLayout = new VBox(10);
 		centerLayout.getChildren().addAll(label);
 		centerLayout.setAlignment(Pos.CENTER);
-
+		
 		HBox bottomLayout = new HBox();
-		bottomLayout.getChildren().addAll(yesButton);
+		bottomLayout.getChildren().addAll(yesButton,noButton);
 		bottomLayout.setAlignment(Pos.CENTER);
 		bottomLayout.getStyleClass().add("bottomLayout");
-
+		
 		BorderPane borderPane = new BorderPane();
 		borderPane.setCenter(centerLayout);
 		borderPane.setBottom(bottomLayout);
 		borderPane.getStyleClass().add("borderPane");
-
+		
 		Scene scen = new Scene(borderPane);
 		scen.getStylesheets().add("monster.css");
 		alertWindow.setScene(scen);
 		alertWindow.showAndWait();
 
+		
 		return answer;
-
+		
 	}
 }
