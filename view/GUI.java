@@ -1,5 +1,8 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import controller.GameController;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -13,6 +16,8 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.ButtonPressedEvent;
+import model.ButtonPressedListener;
 import model.Player;
 
 /**
@@ -28,6 +33,8 @@ public class GUI extends Application {
 	Button characterButton;
 	Button shopButton;
 
+	List<Button> buttons;
+
 	Label playerIcon;
 	Label spacing;
 	Label enemyIcon;
@@ -36,6 +43,14 @@ public class GUI extends Application {
 	static Label enemyName;
 	static Label textarea;
 
+	private List<ButtonPressedListener> buttonPressedListeners = new ArrayList<>();
+
+	public void addButtonPressedListener(ButtonPressedListener buttonPressedListener) {
+		buttonPressedListeners.add(buttonPressedListener);
+		System.out.println("Adding buttonListener " + buttonPressedListener + ", " + buttonPressedListeners.get(0));
+
+	}
+
 	/**
 	 * Starts the GUI
 	 * 
@@ -43,7 +58,27 @@ public class GUI extends Application {
 	 *            = null
 	 */
 	public void startGui(String[] args) {
+		System.out.println(this);
 		launch(new String[] {});
+	}
+	
+	public List<Button> getButtons() {
+		buttons = new ArrayList();
+		buttons.add(adventureButton);
+		buttons.add(attackButton);
+		buttons.add(inventoryButton);
+		buttons.add(characterButton);
+		buttons.add(shopButton);
+
+		return buttons;
+	}
+
+	public void pressButton(int index) {
+		System.out.println(buttonPressedListeners.size());
+		System.out.println(buttonPressedListeners.get(0));
+		for (ButtonPressedListener listener : buttonPressedListeners) {
+			listener.buttonPressed(new ButtonPressedEvent(index));
+		}
 	}
 
 	@Override
@@ -51,6 +86,7 @@ public class GUI extends Application {
 
 		try {
 
+			addButtonPressedListener(gameController);
 			adventureButton = new Button("Adventure");
 			attackButton = new Button("Attack");
 			inventoryButton = new Button("Inventory");
@@ -104,26 +140,22 @@ public class GUI extends Application {
 			vBoxRight.getChildren().add(adventureButton);
 			adventureButton.setPrefSize(120, 40);
 			adventureButton.setStyle("-fx-text-fill: #F03900;-fx-background-color: #686B7F;");
-			adventureButton.setOnAction(e ->
-
-			gameController.adventureBtn()
-
-			);
+			adventureButton.setOnAction(e -> pressButton(0));
 
 			vBoxRight.getChildren().add(shopButton);
 			shopButton.setPrefSize(120, 40);
 			shopButton.setStyle("-fx-text-fill: #F03900;-fx-background-color: #686B7F;");
-			shopButton.setOnAction(e -> gameController.shopBtn());
+			shopButton.setOnAction(e -> pressButton(1));
 
 			vBoxRight.getChildren().add(inventoryButton);
 			inventoryButton.setPrefSize(120, 40);
 			inventoryButton.setStyle("-fx-text-fill: #F03900;-fx-background-color: #686B7F;");
-			inventoryButton.setOnAction(e -> gameController.inventoryBtn());
+			inventoryButton.setOnAction(e -> pressButton(2));
 
 			vBoxRight.getChildren().add(characterButton);
 			characterButton.setPrefSize(120, 40);
 			characterButton.setStyle("-fx-text-fill: #F03900;-fx-background-color: #686B7F;");
-			characterButton.setOnAction(e -> gameController.characterBtn());
+			characterButton.setOnAction(e -> pressButton(3));
 
 			Scene scene = new Scene(pane, 1200, 800);
 			scene.getStylesheets().add("monster.css");
@@ -184,11 +216,22 @@ public class GUI extends Application {
 		label.setPrefSize(x, y);
 		return label;
 	}
+	public void showShop() {
+		ShopGUI shopGUI = new ShopGUI();
 
-	private void inventory() {
+		shopGUI.display("Shop", "A shop where the player can buy stuff!");
+	}
+	
+	public void showInventory() {
 		InventoryGUI inventoryGUI = new InventoryGUI();
 
 		inventoryGUI.display("Inventory", "The inventory of the player:");
+	}
+
+	public void showCharacter() {
+		CharacterGUI characterGUI = new CharacterGUI();
+
+		characterGUI.display("Character", "The stats of the player:");
 	}
 
 	private void setPlayerImage() {

@@ -12,3 +12,5 @@
 /Inventory.class
 /HardEnemy.class
 /MediumEnemy.class
+/ButtonPressedEvent.class
+/ButtonPressedListener.class

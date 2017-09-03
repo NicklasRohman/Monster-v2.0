@@ -60,6 +60,9 @@ public abstract class LivingEntity {
 		return level;
 	}
 	
+	public int getDefence() {
+		return defence;
+	}
 
 	public void setAttackPower(int attackPower) {
 		this.attackPower = attackPower;

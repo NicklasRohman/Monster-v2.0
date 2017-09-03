@@ -1,52 +1,45 @@
 package view;
 
-import java.util.List;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import model.Inventory;
-import model.Item;
 import model.Player;
 
-public class InventoryGUI {
+public class CharacterGUI {
 
-	static String answer;
-	static InventoryGUI inventoryGUI;
+	static CharacterGUI characterGUI;
 	
-	private Stage inventoryWindow;
-	private Label textArea;
 	private Player player = Player.getInstance();
-	private Inventory inventory = Inventory.getInstance();
+	private Stage characterWindow;
+	private Label textArea;
 	
-	public InventoryGUI() {		
+	public CharacterGUI() {		
 	}
 	
-	public static InventoryGUI getInstance(){
-		if(inventoryGUI == null){
-			inventoryGUI = new InventoryGUI();
+	public static CharacterGUI getInstance(){
+		if(characterGUI == null){
+			characterGUI = new CharacterGUI();
 		}
-		return inventoryGUI;
+		return characterGUI;
 	}
 
 	public String display(String title, String message){
 		
 		GridPane pane = new GridPane();
 		
-		inventoryWindow = new Stage();
-		inventoryWindow.initModality(Modality.APPLICATION_MODAL);
-		inventoryWindow.setTitle(title);
-		inventoryWindow.setMinWidth(500);
-		inventoryWindow.setMinHeight(800);
-		inventoryWindow.initStyle(StageStyle.UNDECORATED);
+		characterWindow = new Stage();
+		characterWindow.initModality(Modality.APPLICATION_MODAL);
+		characterWindow.setTitle(title);
+		characterWindow.setMinWidth(500);
+		characterWindow.setMinHeight(800);
+		characterWindow.initStyle(StageStyle.UNDECORATED);
 
 		textArea = createTextArea();
 
@@ -57,7 +50,7 @@ public class InventoryGUI {
 		Button okButton = new Button("Ok"); 
 		Player p = Player.getInstance();
 		okButton.setOnAction(e ->{
-			inventoryWindow.close();
+			characterWindow.close();
 			
 		});
 
@@ -76,8 +69,8 @@ public class InventoryGUI {
 		
 		Scene scene = new Scene(pane);
 		scene.getStylesheets().add("monster.css");
-		inventoryWindow.setScene(scene);
-		inventoryWindow.showAndWait();
+		characterWindow.setScene(scene);
+		characterWindow.showAndWait();
 		return p.getName();
 	}
 	
@@ -90,12 +83,8 @@ public class InventoryGUI {
 		textArea.getStyleClass().add("textarea");
 		textArea.setAlignment(Pos.TOP_LEFT);
 		textArea.setWrapText(true);
-		textArea.setText("The Hero have the following items: ");
-		for(int i = 0; i < inventory.getPlayerInventory().size(); i++) {
-			Item temp = (Item)inventory.getPlayerInventory().get(i);
-			textArea.setText(textArea.getText() + "\n" + (i + 1) + ": " + temp.getName());
-
-		}
+		
+		textArea.setText(" Healtpoints: " + player.getHp() + "\n Attack power: " + player.getAttackPoints() + "\n Defence: " + player.getDefence() + "\n Luck: " + player.getPlayerLuck() + "\n Level: " + player.getLevel() + "\n Gold: " + player.getGold());
 
 		return textArea;
 	}

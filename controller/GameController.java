@@ -1,27 +1,30 @@
 package controller;
 
+import javafx.scene.control.Button;
 import model.Adventure;
+import model.ButtonPressedEvent;
 import model.EasyEnemy;
 import model.Player;
 import model.RandomClass;
+import model.ButtonPressedListener;
 import view.ConfirmBox;
 import view.GUI;
 
 /**
  * 
- * @author Nicklas
- * The main class starts the game
- * Its a singleton class
+ * @author Nicklas The main class starts the game Its a singleton class
  */
-public class GameController {
-	static GUI gui;
-	Player player = Player.getInstance();
-	Battle battle = Battle.getInstance();
-	EasyEnemy easyEnemy = new EasyEnemy(player.getLevel());
+public class GameController implements ButtonPressedListener {
+	private static GUI gui;
+	private Player player = Player.getInstance();
+	private Battle battle = Battle.getInstance();
+//	private EasyEnemy easyEnemy = new EasyEnemy(player.getLevel());
+
 	public static GameController gc = null;
 
 	private GameController() {
 	}
+
 	/**
 	 * the method to get a instance of the class
 	 */
@@ -31,17 +34,25 @@ public class GameController {
 		}
 		return gc;
 	}
+	
+
 	/**
 	 * Method that starts the game
-	 * @param args = null
+	 * 
+	 * @param args
+	 *            = null
 	 */
 	public static void main(String[] args) {
-		gui = new GUI();
-		gui.startGui(args);
+		GameController.getInstance();
+		System.out.println(gc);
+		GameController.gui = new GUI();
+		System.out.println(gui);
+		GameController.gui.startGui(args);
 	}
 
 	/**
 	 * Will handle the adventure button
+	 * 
 	 * @return adventureLog or ""
 	 */
 	public String adventureBtn() {
@@ -63,26 +74,55 @@ public class GameController {
 		} else {
 			return adventureLog;
 		}
-
 	}
+
 	/**
 	 * Will handle the shop button
 	 */
-	public void shopBtn(){
+	public void shopBtn() {
 		GUI.printTextArea("Show me your money!!!");
 		/**
 		 * Will handle the inventory button
 		 */
 	}
-	public void inventoryBtn(){
+
+	public void inventoryBtn() {
 		GUI.printTextArea("Lets se what we have here.");
 	}
+
 	/**
 	 * Will handle the character button
 	 */
 	public void characterBtn() {
 		GUI.printTextArea("Thats me. :D");
 	}
-	
-	
+
+	@Override
+	public void buttonPressed(ButtonPressedEvent event) {
+		System.out.println("Event triggered");
+		
+		switch (event.getPressedButton()) {
+		case 0:
+			adventureBtn();
+			break;
+			
+		case 1:
+			gui.showShop();
+			break;
+			
+		case 2:
+			gui.showInventory();
+			break;
+			
+		case 3:
+			gui.showCharacter();
+			break;
+
+		default:
+				System.out.println("No index");
+
+			break;
+		}
+		
+	}
 }

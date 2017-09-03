@@ -83,7 +83,7 @@ public class Battle {
 					boolean magicFind = RandomClass.magicFind(player);
 					if (magicFind) {
 						ItemGenerator itemGenerator = new ItemGenerator();
-						Item item = itemGenerator.generateItem();
+						Item item = itemGenerator.generateItem(0);
 						GUI.printTextArea(
 								monster.getName() + "alsow drops a " + item.getName() + item.getAttackPower());
 					}

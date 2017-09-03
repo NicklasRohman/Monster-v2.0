@@ -1,10 +1,13 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import view.GUI;
 
 public class Player extends LivingEntity {
 
-//	static ArrayList<Item> playersInventory = new ArrayList<Item>();
+	
 	public static Player player;
 	
 	private int experience, gold,nextLevel = 10;
@@ -51,6 +54,7 @@ public class Player extends LivingEntity {
 		}
 		return player;
 	}
+	
 
 	/**
 	* Get players experience.
@@ -150,10 +154,7 @@ public class Player extends LivingEntity {
 	public int addExperience() {
 		return 0;
 	}
-	
-	public String addItem(){
-		return "test";
-	}
+
 	
 	public String removeItems(){
 		return "test";
@@ -359,11 +360,14 @@ public class Player extends LivingEntity {
 	public void changePlayergear(){
 		
 	}
+	
 //	public void playersInventory(){
 //		for (Item i : playersInventory) {
 //			System.out.println(i);
 //		}
 //	}
+	
+
 
 public void playersStatusPoints(int statsPoints) {
 		
