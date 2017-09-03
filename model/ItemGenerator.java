@@ -67,12 +67,9 @@ public class ItemGenerator {
 			// Trousers
 			return "Trousers";
 		case 8:
-			// Gloves
-			return "Gloves";
-		case 9:
 			// Boots
 			return "Boots";
-		case 10:
+		case 9:
 			// Shield
 			return "Shield";
 		default:

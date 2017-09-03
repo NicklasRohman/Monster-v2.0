@@ -40,8 +40,12 @@ public class Inventory extends AbstractInventory{
 	
 	private void addBasicItems() {
 		playersInventory.add(itemGenerator.generateItem(1));
+		playersInventory.add(itemGenerator.generateItem(4));
+		playersInventory.add(itemGenerator.generateItem(5));
 		playersInventory.add(itemGenerator.generateItem(6));
 		playersInventory.add(itemGenerator.generateItem(7));
+		playersInventory.add(itemGenerator.generateItem(8));
+		playersInventory.add(itemGenerator.generateItem(9));
 
 	}
 }
