@@ -47,7 +47,6 @@ public class GUI extends Application {
 
 	public void addButtonPressedListener(ButtonPressedListener buttonPressedListener) {
 		buttonPressedListeners.add(buttonPressedListener);
-		System.out.println("Adding buttonListener " + buttonPressedListener + ", " + buttonPressedListeners.get(0));
 
 	}
 
@@ -58,12 +57,10 @@ public class GUI extends Application {
 	 *            = null
 	 */
 	public void startGui(String[] args) {
-		System.out.println(this);
 		launch(new String[] {});
 	}
 	
 	public List<Button> getButtons() {
-		buttons = new ArrayList();
 		buttons.add(adventureButton);
 		buttons.add(attackButton);
 		buttons.add(inventoryButton);

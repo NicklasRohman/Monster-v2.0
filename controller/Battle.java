@@ -129,7 +129,7 @@ public class Battle {
 
 	private void usePotions(Player player) {
 		if (player.getHealingPotions() > 0) {
-			boolean inputHealing = usePotions.display("Medic time!! \n Use a healing potion? ");
+			boolean inputHealing = usePotions.display("Medic time!! \nUse one of your " + player.getHealingPotions() +" healing potion? ");
 			if (inputHealing) {
 				player.restorHealt(player.getHealingPotions());
 				player.setHealingPotions(player.getHealingPotions() - 1);

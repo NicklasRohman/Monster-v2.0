@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.scene.control.Button;
 import model.Adventure;
 import model.ButtonPressedEvent;
 import model.EasyEnemy;
@@ -44,9 +43,7 @@ public class GameController implements ButtonPressedListener {
 	 */
 	public static void main(String[] args) {
 		GameController.getInstance();
-		System.out.println(gc);
 		GameController.gui = new GUI();
-		System.out.println(gui);
 		GameController.gui.startGui(args);
 	}
 
@@ -74,27 +71,6 @@ public class GameController implements ButtonPressedListener {
 		} else {
 			return adventureLog;
 		}
-	}
-
-	/**
-	 * Will handle the shop button
-	 */
-	public void shopBtn() {
-		GUI.printTextArea("Show me your money!!!");
-		/**
-		 * Will handle the inventory button
-		 */
-	}
-
-	public void inventoryBtn() {
-		GUI.printTextArea("Lets se what we have here.");
-	}
-
-	/**
-	 * Will handle the character button
-	 */
-	public void characterBtn() {
-		GUI.printTextArea("Thats me. :D");
 	}
 
 	@Override
